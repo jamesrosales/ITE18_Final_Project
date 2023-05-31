@@ -1,8 +1,11 @@
 <template>
   <div>
     <div class="header">
-      <h1>My Website</h1>
-      <p>A website created by me.</p>
+      <div class="center"><a href="http://localhost:3000/ite18_project/">
+  <img src="../../media/OBICO.png" style="width: 140px; height: 100px;"></a>
+</div>
+      <h1>obico</h1>
+      <p>Your Blogs of Destiny</p>
     </div>
     <LogNav />
     <h2 style="color: white;">About Me</h2>

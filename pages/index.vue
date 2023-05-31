@@ -1,57 +1,81 @@
 <template>
   <div>
     <div class="header">
-      <h1>My Website</h1>
-      <p>A website created by me.</p>
+      <div class="center"><a href="http://localhost:3000/ite18_project/">
+  <img src="../media/OBICO.png" style="width: 140px; height: 100px;"></a>
+</div>
+      <h1>obico</h1>
+      <p>Your Blogs of Destiny</p>
     </div>
     <Navbar />
     <div class="row">
       <div class="side">
-        <h2 style="color: white;">About Me</h2>
-        <h5 style="color: white;">Photo of me:</h5>
-        <h2>About Me</h2>
-        <h5>Photo of me:</h5>
-        <div class="fakeimg" style="height:200px;">Image</div>
-        <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-        <h3>More Text</h3>
-        <p>Lorem ipsum dolor sit ame.</p>
-        <div class="fakeimg" style="height:60px;">Image</div>
-        <br>
-        <div class="fakeimg" style="height:60px;">Image</div>
-        <br>
-        <div class="fakeimg" style="height:60px;">Image</div>
-      </div>
-      <div class="main">
-        <h2 style="color: white;">TITLE HEADING</h2>
-        <h5 style="color: white;">Title description, Dec 7, 2017</h5>
-        <h2>TITLE HEADING</h2>
-        <h5>Title description, Dec 7, 2017</h5>
-        <div class="fakeimg" style="height:200px;">Image</div>
-        <p>Some text..</p>
-        <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-        <br>
-        <h2>TITLE HEADING</h2>
-        <h5>Title description, Sep 2, 2017</h5>
-        <div class="fakeimg" style="height:200px;">Image</div>
-        <p>Some text..</p>
-        <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+        <h2 style="color: #F4F4F4;">About Me</h2>
+        <h5 style="color: #F4F4F4;">Photo of me:</h5>
+        <div class="articles">
+          <article v-for="(mountain, index) in mountains" :key="index" class="card">
+            <div class="article-wrapper">
+              <figure>
+                <img :src="mountain.image" alt="Mountain Photo" />
+              </figure>
+              <div class="article-body">
+                <h2>{{ mountain.title }}</h2>
+                <p>{{ mountain.description }}</p>
+              </div>
+            </div>
+          </article>
+        </div>
       </div>
     </div>
     <div class="footer">
-        <p>Copyright © 2023 <a href="https://www.facebook.com/jamesrowise">
-            <button class="btn btn-primary btn-lg"> | James Esguerra Rosales</button>
-          </a> | All Rights Reserved </p>
+      <p>
+        Copyright © 2023
+        <a href="https://www.facebook.com/jamesrowise">
+          <button class="btn btn-primary btn-lg"> | James Esguerra Rosales</button>
+        </a>
+        | All Rights Reserved
+      </p>
     </div>
   </div>
 </template>
+
 <script>
   export default {
     name: 'HomePage',
-    components: {}
+    components: {},
+    data() {
+      return {
+        mountains: []
+      }
+    },
+    async fetch() {
+      this.mountains = await fetch(
+        'https://api.nuxtjs.dev/mountains'
+      ).then(res => res.json())
+    },
   }
 </script>
 
 <style>
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 100%;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px;
+}
+
   * {
     box-sizing: border-box;
   }
@@ -60,6 +84,7 @@
   body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
+    background-color: white; /* Set the background color to white */
   }
 
   /* Header/logo Title */
@@ -159,4 +184,145 @@
       width: 100%;
     }
   }
+
+  article {
+  --img-scale: 1.001;
+  --title-color: black;
+  --link-icon-translate: -20px;
+  --link-icon-opacity: 0;
+  position: relative;
+  border-radius: 16px;
+  box-shadow: none;
+  background: #fff;
+  transform-origin: center;
+  transition: all 0.4s ease-in-out;
+  overflow: hidden;
+}
+
+article a::after {
+  position: absolute;
+  inset-block: 0;
+  inset-inline: 0;
+  cursor: pointer;
+  content: "";
+}
+
+/* basic article elements styling */
+article h2 {
+  margin: 0 0 18px 0;
+  font-family: "Bebas Neue", cursive;
+  font-size: 1.9rem;
+  letter-spacing: 0.06em;
+  color: var(--title-color);
+  transition: color 0.3s ease-out;
+}
+
+figure {
+  margin: 0;
+  padding: 0;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+article img {
+  max-width: 100%;
+  transform-origin: center;
+  transform: scale(var(--img-scale));
+  transition: transform 0.4s ease-in-out;
+}
+
+.article-body {
+  padding: 15px;
+  width: 100%;
+}
+
+article a {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: #28666e;
+}
+
+article a:focus {
+  outline: 1px dotted #28666e;
+}
+
+article a .icon {
+  min-width: 24px;
+  width: 24px;
+  height: 24px;
+  margin-left: 5px;
+  transform: translateX(var(--link-icon-translate));
+  opacity: var(--link-icon-opacity);
+  transition: all 0.3s;
+}
+
+/* using the has() relational pseudo selector to update our custom properties */
+article:has(:hover, :focus) {
+  --img-scale: 1.1;
+  --title-color: #28666e;
+  --link-icon-translate: 0;
+  --link-icon-opacity: 1;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+
+/************************ 
+Generic layout (demo looks)
+**************************/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.articles {
+  display: grid;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+@media screen and (max-width: 960px) {
+  article {
+    font-size: card/inline-size;
+  }
+  .article-body p {
+    display: none;
+  }
+}
+
+@container card (min-width: 380px) {
+  .article-wrapper {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 16px;
+  }
+  .article-body {
+    padding-left: 0;
+  }
+  figure {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  figure img {
+    height: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
+}
+
+.sr-only:not(:focus):not(:active) {
+  clip: rect(0 0 0 0); 
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap; 
+  width: 1px;
+}
 </style>

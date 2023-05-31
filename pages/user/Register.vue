@@ -1,8 +1,11 @@
 <template>
   <div>
     <div class="header">
-      <h1>My Website</h1>
-      <p>A website created by me.</p>
+      <div class="center"><a href="http://localhost:3000/ite18_project/">
+  <img src="../../media/OBICO.png" style="width: 140px; height: 100px;"></a>
+</div>
+      <h1>obico</h1>
+      <p>Your Blogs of Destiny</p>
     </div>
     <RegNav />
     <h2 style="color: white;">About Me</h2>
@@ -28,7 +31,7 @@
           <input v-model="password" type="password" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="password" required />
         </div>
         <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"> Sign up </button>
-      </form>
+      </form><br></br>
     </div>
   </div>
 </template>

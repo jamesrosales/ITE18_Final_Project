@@ -1,10 +1,126 @@
 <template>
   <div>
     <div class="header">
-      <h1>My Website</h1>
-      <p>A website created by me.</p>
+      <div class="center"><a href="http://localhost:3000/ite18_project/">
+  <img src="../media/OBICO.png" style="width: 140px; height: 100px;">
+</a>
+</div>
+      <h1>obico</h1>
+      <p>Your Blogs of Destiny</p>
     </div>
     <Navbar />
+    <h2 style="color: white;">xxx</h2>
+    <div v-if="selectedBlog">
+      <div class="flex">
+      <div class="max-w-md w-full mx-auto mt-8">
+        <div class="flex justify-center">
+          <h1 class="text-3xl font-extrabold mb-4">Update Blog</h1>
+        </div>
+    <form @submit.prevent="updateBlog">
+    <div class="mb-6 flex justify-center">
+      <input
+        v-model="selectedBlog.date"
+        type="date"
+        class="
+          shadow-sm
+          bg-gray-50
+          border border-gray-300
+          text-gray-900 text-sm
+          rounded-lg
+          focus:ring-blue-500 focus:border-blue-500
+          block
+          w-full
+          p-2.5
+          dark:bg-gray-700
+          dark:border-gray-600
+          dark:placeholder-gray-400
+          dark:text-white
+          dark:focus:ring-blue-500
+          dark:focus:border-blue-500
+          dark:shadow-sm-light
+          "
+        placeholder="Select Date"
+        required
+        @input="selectedBlog.date = $event.target.value"
+      /></div>
+    <div class="mb-6 flex justify-center">
+      <input
+        v-model="selectedBlog.blogtitle"
+        type="text"
+        class="
+          shadow-sm
+          bg-gray-50
+          border border-gray-300
+          text-gray-900 text-sm
+          rounded-lg
+          focus:ring-blue-500 focus:border-blue-500
+          block
+          w-full
+          p-2.5
+          dark:bg-gray-700
+          dark:border-gray-600
+          dark:placeholder-gray-400
+          dark:text-white
+          dark:focus:ring-blue-500
+          dark:focus:border-blue-500
+          dark:shadow-sm-light
+          "
+        placeholder="Title"
+        required
+        @input="selectedBlog.blogtitle = $event.target.value"
+      /></div>
+    <div class="mb-6 flex justify-center">
+      <input
+        v-model="selectedBlog.content"
+        type="text"
+        class="
+          shadow-sm
+          bg-gray-50
+          border border-gray-300
+          text-gray-900 text-sm
+          rounded-lg
+          focus:ring-blue-500 focus:border-blue-500
+          block
+          w-full
+          p-2.5
+          dark:bg-gray-700
+          dark:border-gray-600
+          dark:placeholder-gray-400
+          dark:text-white
+          dark:focus:ring-blue-500
+          dark:focus:border-blue-500
+          dark:shadow-sm-light
+          "
+        placeholder="Content"
+        required
+        @input="selectedBlog.content = $event.target.value"
+      /></div>
+      <div>
+        <button
+          type="submit"
+          class="
+            text-white
+            bg-blue-700
+            hover:bg-blue-800
+            focus:ring-4 focus:outline-none focus:ring-blue-300
+            font-medium
+            rounded-lg
+            text-sm
+            px-5
+            py-2.5
+            text-center
+            dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800
+            "
+        >Update</button></div>
+        <div><br>
+        <button
+          type="submit"
+          class="delete-button"
+          onclick="window.location.href = 'http://localhost:3000/ite18_project/blog'"
+        >Cancel
+        </button></div><br></br>
+    </form></div></div></div>
+<div v-else>
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -13,7 +129,9 @@
               <div class="blog-details">
                 <h2>{{ blog.attributes.blogtitle }}</h2>
                 <h6>{{ blog.attributes.date }}</h6>
-                <p>{{ blog.attributes.content }}</p>
+                <h6>{{ blog.attributes.content }}</h6>
+                <button class="edit-button" @click="editBlog(blog)">Edit</button>
+                <button class="delete-button" @click="deleteBlog(blog.id)">Delete</button>
               </div>
             </li>
           </ul>
@@ -21,39 +139,143 @@
       </div>
     </div>
   </div>
+  <div class="footer">
+      <p>
+        Copyright © 2023
+        <a href="https://www.facebook.com/jamesrowise">
+          <button class="btn btn-primary btn-lg"> | James Esguerra Rosales</button>
+        </a>
+        | All Rights Reserved
+      </p>
+    </div>
+  </div>
 </template>
+
 <script>
-  import axios from 'axios';
-  export default {
-    data() {
-      return {
-        blogs: {
-          data: []
-        },
-      };
-    },
-    computed: {
-      sortedBlogs() {
-        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-        return this.blogs.data.sort((a, b) => {
-          // Assuming your date format is ISO string, otherwise modify accordingly
-          return new Date(a.attributes.date) - new Date(b.attributes.date);
-        });
+import axios from 'axios';
+
+export default {
+  data() {
+    return {
+      blogs: {
+        data: []
       },
-    },
-    mounted() {
-      axios.get('http://localhost:1337/api/blogs').then(response => {
-        this.blogs = response.data;
-        // eslint-disable-next-line no-console
-        console.log(response);
-      }).catch(error => {
-        // eslint-disable-next-line no-console
-        console.log(error);
+      blogtitle: '',
+      date: '',
+      content: '',
+      selectedBlog: null
+    };
+  },
+  computed: {
+    sortedBlogs() {
+      // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+      return this.blogs.data.sort((a, b) => {
+        // Assuming your date format is ISO string, otherwise modify accordingly
+        return new Date(a.attributes.date) - new Date(b.attributes.date);
       });
     },
-  };
+  },
+  mounted() {
+    this.fetchBlogs();
+  },
+  methods: {
+    fetchBlogs() {
+      axios.get('http://localhost:1337/api/blogs')
+        .then(response => {
+          this.blogs = response.data;
+          // eslint-disable-next-line no-console
+          console.log(response);
+        })
+        .catch(error => {
+          // eslint-disable-next-line no-console
+          console.log(error);
+        });
+    },
+    deleteBlog(id) {
+      axios.delete(`http://localhost:1337/api/blogs/${id}`)
+        .then(response => {
+          // eslint-disable-next-line no-console
+          console.log(response);
+          // Remove the deleted blog from the data
+          this.blogs.data = this.blogs.data.filter(blog => blog.id !== id);
+        })
+        .catch(error => {
+          // eslint-disable-next-line no-console
+          console.log(error);
+        });
+    },
+    editBlog(blog) {
+    this.selectedBlog = { ...blog }; // Create a copy of the selected article
+    },
+    updateBlog() { 
+      axios.put(`http://localhost:1337/api/blogs/${this.selectedBlog.id}`, {
+        data: {
+          blogtitle: this.selectedBlog.blogtitle,
+          date: this.selectedBlog.date,
+          content: this.selectedBlog.content,
+        },
+      })
+    .then(response => {
+      // Update the article in the articles data
+      const updatedBlog = response.data.data;
+      const index = this.blogs.data.findIndex(blog => blog.id === updatedBlog.id);
+      if (index !== -1) {
+        this.blogs.data.splice(index, 1, updatedBlog);
+      }
+      this.selectedBlog = null; // Clear the selected article after update
+    })
+    .catch(error => {
+      // eslint-disable-next-line no-console
+      console.error('Error updating blog:', error);
+    });
+}
+  },
+};
 </script>
+
 <style>
+  .delete-button {
+    background-color: #f56565;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .delete-button:hover {
+    background-color: #e53e3e;
+  }
+
+  .edit-button {
+    background-color: #4299e1;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .edit-button:hover {
+    background-color: #3182ce;
+  }
+
+  .update-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 1rem;
+    }
+
+  .update-button button {
+    background-color: #e53e3e;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
   .container {
     display: flex;
     justify-content: center;
