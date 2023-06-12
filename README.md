@@ -1,10 +1,12 @@
 # frontend
 
-## On your desktop, create a folder, and name it to "ITE18 Final Project." Open you command prompt and locate your "ITE18 Final Project" folder, run this 
+## On your desktop, create a folder, and name it to "ITE18 Final Project." Open you command prompt and locate your "ITE18 Final Project" folder, setup the Strapi, run this:
 
 ### yarn create strapi-app backend --quickstart
 
-## Using the --quickstart flag at the end of the command to directly create the project in quickstart mode, which uses the default database (SQLite).
+![image](https://github.com/jamesrosales/ITE18_Final_Project/assets/93830746/2934ee65-9a52-407c-99c0-580f92f49a9b)
+
+## Using the --quickstart flag at the end of the command to directly create the project in quickstart mode, which uses the default database (SQLite). Once the installation is complete, your browser automatically opens a new tab. Complete the form to create your new Strapi administrator account.
 
 ## Build Setup
 
