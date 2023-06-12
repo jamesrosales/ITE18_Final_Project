@@ -1,22 +1,37 @@
 <template>
+  <!-- Start of template section -->
   <div>
+    <!-- Start of div -->
     <div class="header">
-      <div class="center"><a href="http://localhost:3000/ite18_project/">
-  <img src="../media/OBICO.png" style="width: 140px; height: 100px;"></a>
-</div>
+      <!-- Header section -->
+      <div class="center">
+        <!-- Centered div -->
+        <a href="http://localhost:3000/ite18_project/">
+          <!-- Link to home page -->
+          <img src="../media/OBICO.png" style="width: 140px; height: 100px;">
+          <!-- OBICO logo -->
+        </a>
+      </div>
       <h1>obico</h1>
       <p>Your Blogs of Destiny</p>
     </div>
     <Navbar />
+    <!-- Include the Navbar component -->
+
     <h2 style="color: white;">About Me</h2>
     <h5 style="color: white;">Photo of me:</h5>
     <div class="flex">
+      <!-- Flex container -->
       <div class="max-w-md w-full mx-auto mt-8">
+        <!-- Max width container -->
         <div class="flex justify-center">
+          <!-- Flex centered -->
           <h1 class="text-3xl font-extrabold mb-4">Add Blog</h1>
         </div>
         <form @submit.prevent="handleSubmit">
+          <!-- Form submission -->
           <div class="mb-6 flex justify-center">
+            <!-- Date input -->
             <input
               v-model="date"
               type="date"
@@ -43,6 +58,7 @@
             />
           </div>
           <div class="mb-6 flex justify-center">
+            <!-- Blog title input -->
             <input
               v-model="blogtitle"
               type="text"
@@ -69,6 +85,7 @@
             />
           </div>
           <div class="mb-6 flex justify-center">
+            <!-- Blog content input -->
             <input
               v-model="content"
               type="text"
@@ -95,6 +112,7 @@
             />
           </div>
           <div>
+            <!-- Submit button -->
             <button
               type="submit"
               class="
@@ -114,9 +132,14 @@
               Add
             </button>
           </div>
-        </form><br></br>
+        </form>
+        <br></br>
       </div>
-    </div><div class="footer">
+    </div>
+    <!-- End of div -->
+
+    <div class="footer">
+      <!-- Footer section -->
       <p>
         Copyright © 2023
         <a href="https://www.facebook.com/jamesrowise">
@@ -126,6 +149,7 @@
       </p>
     </div>
   </div>
+  <!-- End of template section -->
 </template>
 
 <script>
@@ -134,33 +158,38 @@ import axios from 'axios';
 export default {
   data() {
     return {
-        date: '',
-        blogtitle: '',
-        content: ''
-    }
+      date: '',
+      blogtitle: '',
+      content: ''
+    };
   },
   methods: {
     async handleSubmit() {
       try {
         const response = await axios.post('http://localhost:1337/api/blogs', {
-        data: {
-          date: this.date,
-          blogtitle: this.blogtitle,
-          content: this.content,
-        }});
+          // Make a POST request to add a new blog
+          data: {
+            date: this.date,
+            blogtitle: this.blogtitle,
+            content: this.content,
+            user: this.$auth.$state.user.id
+          }
+        });
         setTimeout(() => {
-            window.location.href = 'http://localhost:3000/blog';
-          }, 500);
+          // Redirect to the blog page after a delay
+          window.location.href = 'http://localhost:3000/blog';
+        }, 500);
         // eslint-disable-next-line no-console
         console.log('Data added successfully:', response.data);
       } catch (error) {
         // eslint-disable-next-line no-console
         console.error('Error adding data:', error);
       }
-    },
-  },
+    }
+  }
 };
 </script>
+<!-- End of script section -->
 
 <style>
   .flex {
@@ -201,3 +230,4 @@ export default {
     font-size: 40px;
   }
 </style>
+<!-- End of style section -->

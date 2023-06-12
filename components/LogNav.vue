@@ -1,29 +1,54 @@
-<!-- eslint-disable vue/multi-word-component-names --> // eslint-disable-next-line vue/multi-word-component-names
+<!-- eslint-disable vue/multi-word-component-names -->
+<!-- Disable eslint rule 'vue/multi-word-component-names' for the entire file -->
+
 <template>
+  <!-- Start of template section -->
   <div class="parentDiv">
+    <!-- Start of parentDiv -->
     <div class="nav">
+      <!-- Start of nav -->
       <div class="bg-gray-800 py-4 px-4">
+        <!-- Start of bg-gray-800 -->
         <NuxtLink class="text-white p-2 hover:bg-gray-700" to="/">Home</NuxtLink>
+        <!-- NuxtLink component with text 'Home' -->
         <NuxtLink v-if="!isAuthenticated" class="text-white p-2 hover:bg-gray-700" to="/user/register">Sign Up</NuxtLink>
+        <!-- NuxtLink component with text 'Sign Up', conditionally rendered if 'isAuthenticated' is false -->
       </div>
+      <!-- End of bg-gray-800 -->
     </div>
+    <!-- End of nav -->
   </div>
+  <!-- End of parentDiv -->
 </template>
+<!-- End of template section -->
+
 <script>
+  // Start of script section
   import {
     mapGetters
   } from 'vuex'
+  // Importing the 'mapGetters' function from Vuex
+
   export default {
+    // Exporting the default Vue component
     computed: {
       ...mapGetters(['isAuthenticated']),
+      // Using the 'mapGetters' function to map the 'isAuthenticated' getter from Vuex
     },
     methods: {
+      // Start of methods section
       async userLogout() {
+        // Defining an asynchronous method named 'userLogout'
         await this.$auth.logout()
+        // Calling the 'logout' method from the '$auth' object and awaiting its completion
       },
     },
+    // End of methods section
   }
+  // End of export default
 </script>
+<!-- End of script section -->
+
 <style>
   body {
     margin: 0;
@@ -46,3 +71,4 @@
     padding: 0 5px;
   }
 </style>
+<!-- End of style section -->

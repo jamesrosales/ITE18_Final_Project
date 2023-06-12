@@ -14,9 +14,8 @@ export default {
       }
     }
   },
-
   auth: {
-    // Options
+    // Authentication options
     strategies: {
       local: {
         token: {
@@ -39,13 +38,14 @@ export default {
       },
     },
   },
-  // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
+    // HTML head configuration
     title: 'frontend',
     htmlAttrs: {
       lang: 'en',
     },
     meta: [
+      // Meta tags
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
@@ -53,33 +53,23 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
-
-  // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
-
-  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['~plugins/axios'],
-
-  // Auto import components: https://go.nuxtjs.dev/config-components
-  components: true,
-
-  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
+  css: [], // Global CSS files
+  plugins: ['~plugins/axios'], // Plugins to run before rendering pages
+  components: true, // Auto import components
   buildModules: [
-    // https://go.nuxtjs.dev/eslint
-    '@nuxtjs/eslint-module',
-    // https://go.nuxtjs.dev/tailwindcss
-    '@nuxtjs/tailwindcss',
+    // Modules for development and build
+    '@nuxtjs/eslint-module', // ESLint module
+    '@nuxtjs/tailwindcss', // Tailwind CSS module
   ],
-
-  // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    '@nuxtjs/axios',
-    '@nuxtjs/auth-next'
+    // Modules
+    '@nuxtjs/axios', // Axios module for making HTTP requests
+    '@nuxtjs/auth-next' // Auth module for authentication
   ],
-  // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    // Build configuration
     transpile: [
-      'defu'
+      'defu' // Packages to transpile
     ]
   }
 }
