@@ -1,5 +1,11 @@
 # frontend
 
+## On your desktop, create a folder, and name it to "ITE18 Final Project." Open you command prompt and locate your "ITE18 Final Project" folder, run this 
+
+### yarn create strapi-app backend --quickstart
+
+## Using the --quickstart flag at the end of the command to directly create the project in quickstart mode, which uses the default database (SQLite).
+
 ## Build Setup
 
 ```bash
