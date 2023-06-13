@@ -8,9 +8,9 @@
 
 ## Here's a preview of what we want to achieve:
 
-![image](https://github.com/jamesrosales/ITE18_Final_Project/assets/93830746/570e5dcc-6205-4c93-9182-3f03648d1c6b)
+![image](https://github.com/jamesrosales/ITE18_Final_Project/assets/93830746/71e38391-36ef-4840-a7b3-0c6e4426a4d8)
 
-![image](https://github.com/jamesrosales/ITE18_Final_Project/assets/93830746/a168b3f3-9c6e-422c-8b45-aed18f1f64e4)
+![image](https://github.com/jamesrosales/ITE18_Final_Project/assets/93830746/ca6c7a5b-97fa-452f-94c3-a03f53f2ae2f)
 
 ![image](https://github.com/jamesrosales/ITE18_Final_Project/assets/93830746/53089c5b-05b7-4618-9643-80cea16d8491)
 
