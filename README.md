@@ -37,6 +37,7 @@ yarn create strapi-app backend --quickstart
 ## Open a terminal or, from Visual Studio Code, open an integrated terminal and use the following command to create a new starter project:
 
 ```bash yarn create nuxt-app frontend
+yarn create nuxt-app frontend
 ```
 
 ## After running the command above, you’ll have to answer some questions. Once all questions are answered, it will install all the dependencies.
