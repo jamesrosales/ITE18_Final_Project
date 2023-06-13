@@ -8,7 +8,10 @@
 
 ## Here's a preview of what we want to achieve:
 
-![image](https://github.com/jamesrosales/ITE18_Final_Project/assets/93830746/047a970d-a8aa-46ed-9c8e-a0e4e506cdb3)
+![image](https://github.com/jamesrosales/ITE18_Final_Project/assets/93830746/878d3da6-e5de-4772-9a10-9a0659820d66)
+
+![image](https://github.com/jamesrosales/ITE18_Final_Project/assets/93830746/a168b3f3-9c6e-422c-8b45-aed18f1f64e4)
+
 
 ## Node.js, we recommend you have the v14 version installed, Yarn, a text editor, and a Vue tooling for VS Code. It comes with multiple features like syntax highlighting, formatting, IntelliSense, debugging, and more, A terminal, we recommend using VS Code's integrated terminal.
 
