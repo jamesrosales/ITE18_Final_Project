@@ -1842,6 +1842,10 @@ $ yarn start
 $ yarn generate
 ```
 
+## This is the directory of the frontend, please be guided:
+
+![image](https://github.com/jamesrosales/ITE18_Final_Project/assets/93830746/ff49612e-13a3-4f8e-a012-85da0dee3cad)
+
 # Thank you for spending your time on reading this learning tips!
 
 ## For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
