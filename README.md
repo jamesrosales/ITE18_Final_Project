@@ -544,8 +544,6 @@ export const getters = {
 
 ## Create a new ./pages/user/Register.vue file, and copy/paste the following code in it:
 
-![image](https://github.com/jamesrosales/ITE18_Final_Project/assets/93830746/cce6b1b8-d1b0-4638-94d4-8dc8de83fd19)
-
 ```bash
 <template>
   <div>
@@ -738,6 +736,8 @@ export const getters = {
 ## In the code above, we've defined two more properties success and username used to display a success message after a successful registration.
 
 # Create a new ./pages/user/Me.vue file, and copy/paste the following code in it:
+
+![image](https://github.com/jamesrosales/ITE18_Final_Project/assets/93830746/90ec594e-d055-4573-bc9a-88ac9e0b6641)
 
 ```bash
 // frontend/pages/user/Me.vue
