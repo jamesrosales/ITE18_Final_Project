@@ -20,7 +20,9 @@
 
 ## On your desktop, create a folder, and name it to "ITE18 Final Project." Open you command prompt and locate your "ITE18 Final Project" folder, setup the Strapi, run this:
 
-### yarn create strapi-app backend --quickstart
+```bash
+yarn create strapi-app backend --quickstart
+```
 
 ![s_4AF4FDEDF16A3DF3B0654D64C2F33EDD6CA7EA05F0D813E76F8984F96837F085_1639072772822_image]
 
@@ -36,7 +38,8 @@
 
 ## Open a terminal or, from Visual Studio Code, open an integrated terminal and use the following command to create a new starter project:
 
-### yarn create nuxt-app frontend
+```bash yarn create nuxt-app frontend
+```
 
 ## After running the command above, you’ll have to answer some questions. Once all questions are answered, it will install all the dependencies.
 
@@ -57,18 +60,20 @@
  
 ## Once the project is created, follow the instructions to install dependencies and start the dev server:
  
-### cd frontend
-### yarn
-### yarn dev
+```bash cd frontend
+yarn
+yarn dev 
+```
 
 ### Now that the dev server is running, open http://localhost:3000/ in your browser.
 
 ## **nuxt auth** authenticates users using a configurable authentication scheme or by using one of the directly supported providers. It provides an API for triggering authentication and accessing the resulting user information.
 
 ### Ctrl + C to close process js
-### cd frontend
-### yarn add --exact @nuxtjs/auth-next
-### yarn add @nuxtjs/axios
+```bash cd frontend
+yarn add --exact @nuxtjs/auth-next
+yarn add @nuxtjs/axios
+```
 
 ## Then, add the following to the modules section of nuxt.config.js:
 
