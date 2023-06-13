@@ -1,4 +1,4 @@
-# frontend
+# This is the frontend of my ITE 18 final project.
 
 ## Authentication is the process through which a website or app verifies the identity of its users. As the gatekeeper to an app, authentication needs to be secure and reliable. After all, it deals with user information, potentially the most critical data in an app.
 
