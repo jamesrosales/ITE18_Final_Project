@@ -294,7 +294,7 @@ export const getters = {
 ## Run yarn dev to start the development server.
 ## Visit http://localhost:3000 to view your application.
 
-![image](https://github.com/jamesrosales/ITE18_Final_Project/assets/93830746/8db100c8-16cd-419d-b59a-b87363932156)
+![image](https://github.com/jamesrosales/ITE18_Final_Project/assets/93830746/398a9e5d-977f-4c3e-b082-61e5a7234699)
 
 ## Create a new ./pages/user/Login.vue file, and copy/paste the following code in it:
 
